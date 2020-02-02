@@ -1,6 +1,7 @@
 import argparse
 import os
 import zipfile
+import shutil
 
 parser_args = argparse.ArgumentParser()
 parser_args.add_argument("-i", "--file", required=True, help="Path to file", type=str)
@@ -23,3 +24,4 @@ for root, dirs, files in os.walk(foldername):
         zipf.write(os.path.join(root, file), os.path.join(folder, file))
 
 zipf.close()
+shutil.rmtree(foldername)
